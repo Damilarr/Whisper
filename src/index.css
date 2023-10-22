@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: holenVintage;
+  src: url(/HolenVintageRegular-vmzq9.otf);
+}
+
+body {
+  /* margin: 0; */
+  padding: 0;
+  height: fit-content;
+  background: linear-gradient(to left, #0d1322, #0f172a);
+}
