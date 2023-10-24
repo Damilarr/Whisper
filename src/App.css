@@ -1,9 +1,6 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0.4rem;
-  text-align: center;
-  @apply md:p-8 p-2;
 }
 
 .logo {

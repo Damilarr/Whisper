@@ -1,5 +1,7 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import useStateR from "react-usestateref";
 import GetData from "../Hooks/getData";
+import { useRef } from "react";
 const GlobalContext = createContext();
 export const UseGlobalContext = () => useContext(GlobalContext);
 const AppContext = ({ children }) => {

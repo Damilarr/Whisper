@@ -40,12 +40,18 @@ const Home = () => {
         </div>
       </div>
       <div className="flex flex-col md:flex-row font-medium w-full sm:w-1/2 md:w-1/3 space-x-0 md:space-y-0 space-y-3 md:space-x-2 justify-center items-center px-auto ">
-        <button className="py-1 w-full hover:border-[#4338ca88] hover:border hover:bg-transparent transition-all  shadow-lg flex-grow  bg-[#4438ca88] text-white text-lg px-1 rounded-sm">
-          <Link to={"/sign-up"}>Get started</Link>
-        </button>
-        <button className="py-1 w-full flex-grow  bg-transparent border transition-all hover:bg-[#4438ca88] hover:text-white shadow-lg border-[#4438caa0] text-white  text-lg px-2 rounded-sm">
-          <Link to={"/login"}>Login</Link>
-        </button>
+        <Link
+          to={"/sign-up"}
+          className="py-1 w-full text-center hover:border-yellow-500 hover:border hover:bg-transparent transition-all  shadow-lg flex-grow  bg-yellow-500 text-black hover:text-yellow-500 font-exo text-lg px-1 rounded-md"
+        >
+          Get started
+        </Link>
+        <Link
+          to={"/login"}
+          className="py-1 w-full flex-grow text-center bg-transparent border transition-all hover:yellow-500 hover:text-yellow-500 shadow-lg border-yellow-500 text-white font-exo text-lg px-2 rounded-md"
+        >
+          Login
+        </Link>
       </div>
       {/* steps */}
       <Steps />

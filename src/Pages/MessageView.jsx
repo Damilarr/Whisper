@@ -3,9 +3,9 @@ import { UseGlobalContext } from "../Components/Context";
 import { database } from "../firebaseConfig";
 import { arrayRemove, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import GetData from "../Hooks/getData";
 const MessageView = () => {
-  // const { user, isError, isLoading } = GetData(sessionStorage.getItem("uid"));
-  const { user, isLoading, isError } = UseGlobalContext();
+  const { user, isError, isLoading } = GetData(sessionStorage.getItem("uid"));
   const deleteMessage = async (messageObj) => {
     const documentRef = doc(database, "Users", sessionStorage.getItem("uid"));
     await updateDoc(documentRef, {
@@ -13,7 +13,7 @@ const MessageView = () => {
     });
     toast.success("Message Deleted");
   };
-  useEffect(() => {}, [user]);
+  useEffect(() => {}, [user, user?.messages]);
 
   return (
     <div className="mx-auto max-w-screen-xl py-12">
@@ -21,27 +21,27 @@ const MessageView = () => {
         Messages
       </h2>
       <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
-        {!isLoading && user?.messages ? (
+        {user?.messages ? (
           user.messages.map((message) => {
             return (
               <blockquote
                 key={message.id}
-                className="rounded-lg bg-[#334155] text-white space-y-2 flex flex-col justify-around p-6 shadow-sm sm:p-8"
+                className="rounded-lg bg-gray-800 text-white space-y-2 flex flex-col justify-around p-4 shadow-sm sm:p-6"
               >
-                <span className="text-white font-exo font-semibold">
+                <span className="text-white font-exo text-sm text-center sm:text-base font-medium">
                   {message.date}
                 </span>
                 {message.image && (
                   <img
                     alt="Man"
                     src={message?.image}
-                    className="object-cover rounded-lg"
+                    className="object-cover rounded-lg mx-auto"
                     width={300}
                     height={300}
                   />
                 )}
 
-                <p className="mt-1 sm:mt-4 font-exo2 text-white">
+                <p className="mt-1 sm:mt-3 font-exo2 text-base  text-white">
                   {message.messageText}
                 </p>
                 <div className="flex items-center text-lg justify-between">
@@ -59,7 +59,7 @@ const MessageView = () => {
             );
           })
         ) : (
-          <p className="text-white text-lg text-center mx-auto">
+          <p className="text-white w-full text-lg text-center mx-auto">
             No message here yet,share your link to recive messages
           </p>
         )}

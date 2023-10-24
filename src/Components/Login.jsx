@@ -13,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 const Login = () => {
   const auth = getAuth();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const provider = new GoogleAuthProvider();
   const createUserLink = (userId) => {
     return `http://127.0.0.1:5173/res/:${userId}`;
@@ -32,6 +33,7 @@ const Login = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
   const handleLogin = (e) => {
+    setIsLoading(true);
     e.preventDefault();
     signInWithEmailAndPassword(auth, user.email, user.password)
       .then((res) => {
@@ -42,7 +44,8 @@ const Login = () => {
       });
   };
   // Google sign in
-  const googleSignIn = async () => {
+  const googleSignIn = async (e) => {
+    e.preventDefault();
     signInWithPopup(auth, provider)
       .then(async (result) => {
         const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -68,6 +71,7 @@ const Login = () => {
       email: email,
       userLink: createUserLink(uid),
       photoURL: photoURL,
+      messages: "",
     }).catch((err) => {
       toast.error(err.message);
     });
@@ -109,7 +113,7 @@ const Login = () => {
               type="email"
               value={user.email}
               name="email"
-              className="block w-full py-3 border rounded-lg px-11 bg-gray-900 text-gray-300 border-gray-600 focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full py-3 border rounded-lg px-11 bg-gray-900 text-gray-300 border-gray-600 focus:border-yellow-300 focus:ring-yellow-300 focus:outline-none focus:ring focus:ring-opacity-40"
               placeholder="Email address"
               onChange={handleInput}
             />
@@ -135,7 +139,7 @@ const Login = () => {
 
             <input
               type="password"
-              className="block w-full px-10 py-3 border rounded-lg bg-gray-900 text-gray-300 border-gray-600 focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-10 py-3 border rounded-lg bg-gray-900 text-gray-300 border-gray-600 focus:border-yellow-300 focus:outline-none focus:ring-yellow-200 focus:ring-opacity-40"
               placeholder="Password"
               value={user.password}
               onChange={handleInput}
@@ -144,18 +148,27 @@ const Login = () => {
           </div>
 
           <div className="mt-6">
-            <button
-              onClick={handleLogin}
-              className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
-            >
-              Sign in
-            </button>
+            {!isLoading ? (
+              <button
+                onClick={handleLogin}
+                className="w-full px-6 py-3 text-sm font-semibold tracking-wide text-black capitalize transition-colors duration-300 transform bg-yellow-500 rounded-lg hover:bg-yellow-400 focus:outline-none focus:ring focus:ring-yellow-300 focus:ring-opacity-50"
+              >
+                Sign in
+              </button>
+            ) : (
+              <button
+                className="w-full px-6 py-3 text-sm font-semibold tracking-wide text-black   transition-colors bg-yellow-500 rounded-lg"
+                disabled={true}
+              >
+                <i class="fa-solid fa-spinner fa-spin-pulse text-white"></i>
+              </button>
+            )}
 
             <p className="mt-4 text-center text-gray-400">OR</p>
 
-            <a
+            <button
               onClick={googleSignIn}
-              className="flex items-center justify-center px-6 py-3 mt-4  transition-colors duration-300 transform border rounded-lg border-gray-700 text-gray-200  hover:bg-gray-600"
+              className="flex items-center w-full justify-center px-6 py-3 mt-4  transition-colors duration-300 transform border rounded-lg border-gray-700 text-gray-200  hover:bg-gray-600"
             >
               <svg className="w-6 h-6 mx-2" viewBox="0 0 40 40">
                 <path
@@ -177,12 +190,12 @@ const Login = () => {
               </svg>
 
               <span className="mx-2">Sign in with Google</span>
-            </a>
+            </button>
 
             <div className="mt-6 text-center ">
               <Link
                 to={"/sign-up"}
-                className="text-sm hover:underline text-blue-400"
+                className="text-sm hover:underline text-yellow-400"
               >
                 Don’t have an account yet? Sign up
               </Link>

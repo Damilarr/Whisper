@@ -121,7 +121,7 @@ const Message = () => {
             />
             <i
               onClick={resetInput}
-              className="fa fa-x absolute top-3 right-4  cursor-pointer px-4 py-[13px] bg-slate-500 shadow-md text-white rounded-full "
+              className="fa fa-x absolute top-3 right-4  cursor-pointer px-4 py-[13px] bg-slate-500 shadow-md text-white hover:text-yellow-500 hover:border-yellow-500 hover:border rounded-full "
             ></i>
           </div>
         ) : (
@@ -142,7 +142,7 @@ const Message = () => {
         <div className="items-center flex justify-between text-gray-500 m-2">
           <label
             htmlFor="file-upload"
-            className="cursor-pointer text-white inline-block border rounded-md border-[#494848] py-2 px-3"
+            className="cursor-pointer text-white inline-block border rounded-md border-yellow-500 py-2 px-3"
           >
             <i className="fa fa-camera"></i>
           </label>
@@ -157,16 +157,17 @@ const Message = () => {
           {issending ? (
             <button
               disabled
-              className="btn border rounded-md border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500"
+              className="btn border rounded-md border-yellow-500 p-1 px-4 font-semibold cursor-pointer text-black ml-2 bg-yellow-500"
             >
               <span>
-                Sending <i className="fa-solid fa-spinner fa-spin"></i>
+                Sending{" "}
+                <i className="fa-solid text-gray-200 fa-spinner fa-spin"></i>
               </span>
             </button>
           ) : (
             <div
               onClick={handleMessageSubmit}
-              className="btn border rounded-md border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500"
+              className="btn border rounded-md border-yellow-500 p-1 px-4 font-semibold cursor-pointer text-black ml-2 bg-yellow-500"
             >
               Send Message
             </div>

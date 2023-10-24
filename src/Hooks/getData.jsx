@@ -19,13 +19,17 @@ const GetData = (id = null) => {
         const documentRef = doc(database, "Users", userId);
         const user = await getDoc(documentRef);
         const data = user.data();
-        setUser({ ...data, messages: data.messages.reverse() });
+        if (data?.messages) {
+          setUser({ ...data, messages: data.messages.reverse() });
+        } else {
+          setUser(data);
+        }
         setIsLoading(false);
         setIsError(false);
       } catch (error) {
         setIsLoading(false);
         setIsError(true);
-        // toast.error(error.message);
+        console.log(error.message);
       }
     }, 15000);
     return () => {
