@@ -73,6 +73,7 @@ const Message = () => {
         toast.success(err.message);
       });
   }
+
   async function handleMessageSubmit() {
     setIsSending(true);
     if (image.raw !== "") {
@@ -85,6 +86,7 @@ const Message = () => {
       });
     }
   }
+
   const resetInput = () => {
     inputFile.current.value = "";
     inputFile.current.type = "text";
@@ -106,75 +108,77 @@ const Message = () => {
     return <NoUserFound />;
   }
   return (
-    <section className="w-full">
-      <div className="heading text-center font-bold text-xl sm:text-2xl m-5 text-white">
-        Write a secret message to {user?.userName}
-      </div>
-      <div className=" rounded-lg mx-auto w-full sm:w-10/12 flex flex-col text-gray-800 border border-[#334155] p-4 shadow-lg max-w-2xl">
-        {image.preview ? (
-          <div className="relative">
-            <img
-              src={image.preview}
-              alt="attached image"
-              className="w-full sm:h-72"
-              height={300}
-            />
-            <i
-              onClick={resetInput}
-              className="fa fa-x absolute top-3 right-4  cursor-pointer px-4 py-[13px] bg-slate-500 shadow-md text-white hover:text-yellow-500 hover:border-yellow-500 hover:border rounded-full "
-            ></i>
-          </div>
-        ) : (
-          <span></span>
-        )}
-        <textarea
-          className="description bg-[#334155] sec p-3 h-44 sm:h-60 border border-[#334155] shadow-md rounded-md text-white outline-none"
-          placeholder="Leave a message or feedback"
-          name="messageText"
-          value={message.messageText}
-          readOnly={issending}
-          onChange={(e) =>
-            setMessage({ ...message, [e.target.name]: e.target.value })
-          }
-        ></textarea>
-
-        {/* icons */}
-        <div className="items-center flex justify-between text-gray-500 m-2">
-          <label
-            htmlFor="file-upload"
-            className="cursor-pointer text-white inline-block border rounded-md border-yellow-500 py-2 px-3"
-          >
-            <i className="fa fa-camera"></i>
-          </label>
-          <input
-            id="file-upload"
-            onChange={handleChange}
-            className="hidden"
-            disabled={issending}
-            type="file"
-            ref={inputFile}
-          />
-          {issending ? (
-            <button
-              disabled
-              className="btn border rounded-md border-yellow-500 p-1 px-4 font-semibold cursor-pointer text-black ml-2 bg-yellow-500"
-            >
-              <span>
-                Sending{" "}
-                <i className="fa-solid text-gray-200 fa-spinner fa-spin"></i>
-              </span>
-            </button>
-          ) : (
-            <div
-              onClick={handleMessageSubmit}
-              className="btn border rounded-md border-yellow-500 p-1 px-4 font-semibold cursor-pointer text-black ml-2 bg-yellow-500"
-            >
-              Send Message
-            </div>
-          )}
+    <section className="flex flex-col w-full justify-center items-center h-screen">
+      <section className="w-full">
+        <div className="heading text-center font-bold text-xl sm:text-2xl m-5 text-white">
+          Write a secret message to {user?.userName}
         </div>
-      </div>
-      <ToastContainer theme="dark" />
+        <div className=" rounded-lg mx-auto w-full sm:w-10/12 flex flex-col text-gray-800 border border-[#334155] p-4 shadow-lg max-w-2xl">
+          {image.preview ? (
+            <div className="relative">
+              <img
+                src={image.preview}
+                alt="attached image"
+                className="w-full sm:h-72"
+                height={300}
+              />
+              <i
+                onClick={resetInput}
+                className="fa fa-x absolute top-3 right-4  cursor-pointer px-4 py-[13px] bg-slate-500 shadow-md text-white hover:text-yellow-500 hover:border-yellow-500 hover:border rounded-full "
+              ></i>
+            </div>
+          ) : (
+            <span></span>
+          )}
+          <textarea
+            className="description bg-[#334155] sec p-3 h-44 sm:h-60 border border-[#334155] shadow-md rounded-md text-white outline-none"
+            placeholder="Leave a message or feedback"
+            name="messageText"
+            value={message.messageText}
+            readOnly={issending}
+            onChange={(e) =>
+              setMessage({ ...message, [e.target.name]: e.target.value })
+            }
+          ></textarea>
+
+          {/* icons */}
+          <div className="items-center flex justify-between text-gray-500 m-2">
+            <label
+              htmlFor="file-upload"
+              className="cursor-pointer text-white inline-block border rounded-md border-yellow-500 py-2 px-3"
+            >
+              <i className="fa fa-camera"></i>
+            </label>
+            <input
+              id="file-upload"
+              onChange={handleChange}
+              className="hidden"
+              disabled={issending}
+              type="file"
+              ref={inputFile}
+            />
+            {issending ? (
+              <button
+                disabled
+                className="btn border rounded-md border-yellow-500 p-1 px-4 font-semibold cursor-pointer text-black ml-2 bg-yellow-500"
+              >
+                <span>
+                  Sending{" "}
+                  <i className="fa-solid text-black fa-spinner fa-spin"></i>
+                </span>
+              </button>
+            ) : (
+              <div
+                onClick={handleMessageSubmit}
+                className="btn border rounded-md border-yellow-500 p-1 px-4 font-semibold cursor-pointer text-black ml-2 bg-yellow-500"
+              >
+                Send Message
+              </div>
+            )}
+          </div>
+          <ToastContainer theme="dark" />
+        </div>
+      </section>
     </section>
   );
 };

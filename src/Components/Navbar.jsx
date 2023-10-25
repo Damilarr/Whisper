@@ -57,7 +57,6 @@ const Navbarr = () => {
           )}
         </div>
       </div>
-      <ToastContainer theme="dark" autoClose="2000" />
     </div>
   );
 };
