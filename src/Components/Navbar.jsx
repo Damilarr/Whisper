@@ -3,21 +3,15 @@ import { UseGlobalContext } from "./Context";
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import GetData from "../Hooks/getData";
 
 const Navbarr = () => {
   const navigate = useNavigate();
   const auth = getAuth();
-  // const { user } = UseGlobalContext();
-  const { user } = GetData(sessionStorage.getItem("uid"));
+  const { user } = UseGlobalContext();
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        toast.success("Signed out successfully");
-        sessionStorage.removeItem("uid");
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
+        toast.success("Logged out successfully");
       })
       .catch((error) => {
         // An error happened.

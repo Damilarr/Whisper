@@ -8,16 +8,19 @@ import SignUp from "./Components/SignUp";
 import Dashboard from "./Components/Dashboard";
 import Message from "./Pages/Message";
 import MessageView from "./Pages/MessageView";
+import AppContext from "./Components/Context";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home></Home>} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/res/:uid" element={<Message />} />
-      </Routes>
+      <AppContext>
+        <Routes>
+          <Route path="/" element={<Home></Home>} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/res/:uid" element={<Message />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </AppContext>
     </BrowserRouter>
   );
 }

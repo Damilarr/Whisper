@@ -9,10 +9,12 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { database } from "../firebaseConfig";
 import { ToastContainer, toast } from "react-toastify";
+import { UseGlobalContext } from "./Context";
 
 const Login = () => {
   const auth = getAuth();
   const navigate = useNavigate();
+  const { setUid } = UseGlobalContext();
   const [isLoading, setIsLoading] = useState(false);
   const provider = new GoogleAuthProvider();
   const createUserLink = (userId) => {
@@ -25,6 +27,7 @@ const Login = () => {
   const redirect = (res) => {
     toast.success("Logging you In", { autoClose: "4000" });
     sessionStorage.setItem("uid", res.user.uid);
+    setUid(true);
     setTimeout(() => {
       navigate("/dashboard");
     }, 5000);
@@ -41,6 +44,7 @@ const Login = () => {
       })
       .catch((error) => {
         toast.error(error.message);
+        setIsLoading(false);
       });
   };
   // Google sign in

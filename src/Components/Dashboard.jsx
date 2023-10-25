@@ -5,12 +5,11 @@ import Navbarr from "./Navbar";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import SkeletonLoader from "./SkeletonLoader";
-import GetData from "../Hooks/getData";
 import { UseGlobalContext } from "./Context";
 const Dashboard = () => {
   const auth = getAuth();
   const navigate = useNavigate();
-  const { isLoading, isError, user } = UseGlobalContext();
+  const { isLoading, isError, user, setUid } = UseGlobalContext();
   const handleCopyClick = () => {
     navigator.clipboard.writeText(user?.userLink);
     toast.success("Link Copied");
@@ -20,19 +19,24 @@ const Dashboard = () => {
       if (user) {
         console.log("");
       } else {
-        navigate("/login");
+        sessionStorage.removeItem("uid");
+        setUid(false);
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       }
     });
   }, []);
+  useEffect(() => {}, [user]);
 
   return (
     <>
       <Navbarr />
-      <section className="flex flex-col px-4  py-3">
+      <section className="flex flex-col px-4 py-3">
         {user ? (
-          <section className="flex flex-col justify-between gap-5 rounded-xl bg-slate-800 p-5 sm:w-3/4 lg:w-3/6 mx-auto">
+          <section className="flex flex-col justify-between gap-5 rounded-xl bg-gray-800 p-5 sm:w-3/4 lg:w-3/6 mx-auto">
             <div className="text-left text-white font-exo2 font-semibold">
-              <h1 className="text-xl  ">Hello,{user?.userName}</h1>
+              <h1 className="text-xl">Hello, {user.userName}</h1>
               <p className="font-exo2">
                 Share the link below to receive messages
               </p>
@@ -44,7 +48,7 @@ const Dashboard = () => {
                 type="text"
                 name="code"
                 id="code"
-                value={!user ? "loading..." : user?.userLink}
+                value={user.userLink}
                 readOnly
                 className="w-full text-white overflow-hidden rounded-md bg-slate-700 p-2"
               />
