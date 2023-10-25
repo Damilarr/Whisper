@@ -1,11 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import { UseGlobalContext } from "./Context";
 import { getAuth, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Navbarr = () => {
-  const navigate = useNavigate();
   const auth = getAuth();
   const { user } = UseGlobalContext();
   const handleLogout = () => {
@@ -61,4 +59,4 @@ const Navbarr = () => {
   );
 };
 
-export default Navbarr;
+export default memo(Navbarr);

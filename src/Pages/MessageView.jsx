@@ -3,7 +3,6 @@ import { UseGlobalContext } from "../Components/Context";
 import { database } from "../firebaseConfig";
 import { arrayRemove, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
-import GetData from "../Hooks/getData";
 const MessageView = () => {
   const { user, isError, isLoading } = UseGlobalContext();
   const deleteMessage = async (messageObj) => {
@@ -31,6 +30,10 @@ const MessageView = () => {
                 <span className="text-white font-exo text-sm text-center sm:text-base font-medium">
                   {message.date}
                 </span>
+
+                <p className="mt-1 sm:mt-3 font-exo2 text-base  text-white">
+                  {message.messageText}
+                </p>
                 {message.image && (
                   <img
                     alt="Man"
@@ -40,10 +43,6 @@ const MessageView = () => {
                     height={300}
                   />
                 )}
-
-                <p className="mt-1 sm:mt-3 font-exo2 text-base  text-white">
-                  {message.messageText}
-                </p>
                 <div className="flex items-center text-lg justify-between">
                   <button className="bg-green-500 px-2 shadow-md rounded-md">
                     <i className="fa-solid fa-reply"></i>

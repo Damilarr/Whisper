@@ -4,8 +4,8 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { collection, doc, getDoc, setDoc, where } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { database } from "../firebaseConfig";
 import { ToastContainer, toast } from "react-toastify";

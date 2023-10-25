@@ -1,14 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
 import "./App.css";
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
-import Dashboard from "./Components/Dashboard";
+// import Dashboard from "./Components/Dashboard";
 import Message from "./Pages/Message";
-import MessageView from "./Pages/MessageView";
 import AppContext from "./Components/Context";
+import NotFound from "./Components/NotFound";
+const LazyDashBoard = React.lazy(() => import("./Components/Dashboard"));
 function App() {
   return (
     <BrowserRouter>
@@ -18,7 +19,15 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/:uid" element={<Message />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <React.Suspense fallback="loading...">
+                <LazyDashBoard />
+              </React.Suspense>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AppContext>
     </BrowserRouter>
