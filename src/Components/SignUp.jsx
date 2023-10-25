@@ -38,7 +38,7 @@ const SignUp = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
   const createUserLink = (userId) => {
-    return `http://127.0.0.1:5173/res/:${userId}`;
+    return `https://whispme.vercel.app/:${userId}`;
   };
   const createUser = async (e) => {
     setIsLoading(true);
