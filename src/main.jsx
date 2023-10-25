@@ -6,8 +6,6 @@ import AppContext from "./Components/Context.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AppContext>
-      <App />
-    </AppContext>
+    <App />
   </React.StrictMode>
 );

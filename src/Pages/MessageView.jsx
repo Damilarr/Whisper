@@ -5,7 +5,7 @@ import { arrayRemove, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import GetData from "../Hooks/getData";
 const MessageView = () => {
-  const { user, isError, isLoading } = GetData(sessionStorage.getItem("uid"));
+  const { user, isError, isLoading } = UseGlobalContext();
   const deleteMessage = async (messageObj) => {
     const documentRef = doc(database, "Users", sessionStorage.getItem("uid"));
     await updateDoc(documentRef, {

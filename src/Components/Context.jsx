@@ -1,13 +1,19 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import useStateR from "react-usestateref";
 import GetData from "../Hooks/getData";
-import { useRef } from "react";
 const GlobalContext = createContext();
 export const UseGlobalContext = () => useContext(GlobalContext);
 const AppContext = ({ children }) => {
-  const { isError, isLoading, user } = GetData(sessionStorage.getItem("uid"));
+  const [uid, setUid] = useState(false);
+  const { isError, isLoading, user } = GetData();
   return (
-    <GlobalContext.Provider value={{ isError, isLoading, user }}>
+    <GlobalContext.Provider
+      value={{
+        isError,
+        isLoading,
+        user,
+        setUid,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );

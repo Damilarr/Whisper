@@ -11,9 +11,13 @@ const GetData = (id = null) => {
     const dataInt = setInterval(async () => {
       let userId = "";
       try {
-        if (id !== null) {
-          userId = id;
+        if (sessionStorage.getItem("uid")) {
+          userId = sessionStorage.getItem("uid");
         } else {
+          console.log("no id");
+          setUser(null);
+          setIsError(false);
+          setIsLoading(true);
           return;
         }
         const documentRef = doc(database, "Users", userId);
@@ -40,6 +44,9 @@ const GetData = (id = null) => {
     isLoading,
     isError,
     user,
+    setIsLoading,
+    setIsError,
+    setUser,
   };
 };
 
