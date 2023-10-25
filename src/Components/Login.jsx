@@ -18,7 +18,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const provider = new GoogleAuthProvider();
   const createUserLink = (userId) => {
-    return `http://127.0.0.1:5173/res/:${userId}`;
+    return `https://whispme.vercel.app/:${userId}`;
   };
   const [user, setUser] = useState({
     email: "",
