@@ -1,16 +1,30 @@
 import React, { useEffect } from "react";
 import { UseGlobalContext } from "../Components/Context";
-import { database } from "../firebaseConfig";
+import { database, storage } from "../firebaseConfig";
 import { arrayRemove, doc, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { deleteObject, ref } from "firebase/storage";
 const MessageView = () => {
   const { user, isError, isLoading } = UseGlobalContext();
   const deleteMessage = async (messageObj) => {
     const documentRef = doc(database, "Users", sessionStorage.getItem("uid"));
-    await updateDoc(documentRef, {
-      messages: arrayRemove(messageObj),
-    });
-    toast.success("Message Deleted");
+    try {
+      if (messageObj.imageName) {
+        const imageRef = ref(storage, `images/${messageObj.imageName}`);
+        await updateDoc(documentRef, {
+          messages: arrayRemove(messageObj),
+        });
+        deleteObject(imageRef).then(() => {
+          toast.success("Message Deleted");
+        });
+      } else {
+        await updateDoc(documentRef, {
+          messages: arrayRemove(messageObj),
+        });
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   useEffect(() => {}, [user, user?.messages]);
 

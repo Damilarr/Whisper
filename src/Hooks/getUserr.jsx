@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { database } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
-import { toast } from "react-toastify";
 
 const GetUser = (id = null) => {
   const [isLoading, setIsLoading] = useState(true);
