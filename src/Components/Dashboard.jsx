@@ -50,7 +50,7 @@ const Dashboard = () => {
                 id="code"
                 value={user.userLink}
                 readOnly
-                className="w-full text-white overflow-hidden rounded-md bg-slate-700 p-2"
+                className="w-full text-white overflow-hidden rounded-md bg-gray-700 p-2"
               />
               <button
                 onClick={handleCopyClick}
@@ -64,7 +64,7 @@ const Dashboard = () => {
           <SkeletonLoader />
         )}
         <MessageView />
-        <ToastContainer theme="dark" autoClose="1000" />
+        <ToastContainer theme="dark" autoClose="1500" />
       </section>
     </>
   );
