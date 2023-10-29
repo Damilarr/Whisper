@@ -2,11 +2,9 @@ import { Steps } from "./Steps";
 import React from "react";
 import { Link } from "react-router-dom";
 import TypewriterComponent from "typewriter-effect";
-import DynamicOG from "./DynamicOG";
 const Home = () => {
   return (
     <section className="flex flex-col justify-center px-5 sm:px-7 pb-4 pt-8 sm:pt-4 items-center text-white">
-      <DynamicOG />
       <img src="./logo-notext.png" className="w-52 sm:w-96" alt="Logo" />
       <h2 className="font-holenVintage text-5xl md:text-7xl shadow-lg">
         WHISPER

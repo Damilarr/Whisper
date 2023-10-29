@@ -9,7 +9,6 @@ import SignUp from "./Components/SignUp";
 import Message from "./Pages/Message";
 import AppContext from "./Components/Context";
 import NotFound from "./Components/NotFound";
-import { HelmetProvider } from "react-helmet-async";
 const LazyDashBoard = React.lazy(() => import("./Components/Dashboard"));
 function App() {
   return (
