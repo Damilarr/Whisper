@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import GetUser from "../Hooks/getUserr";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import NoUserFound from "../Components/NoUserFound";
+import DynamicOG from "../Components/DynamicOG";
 const Message = () => {
   const { uid } = useParams();
   const [message, setMessage, messageRef] = useState({
