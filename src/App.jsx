@@ -5,7 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import SignUp from "./Components/SignUp";
-// import Dashboard from "./Components/Dashboard";
 import Message from "./Pages/Message";
 import AppContext from "./Components/Context";
 import NotFound from "./Components/NotFound";
