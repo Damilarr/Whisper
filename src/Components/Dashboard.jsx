@@ -34,12 +34,6 @@ const Dashboard = () => {
     <>
       <Navbarr />
       <section className="flex flex-col px-4 py-3">
-        {user && (
-          <DynamicOG
-            url={user.userLink}
-            name={`Send ${user.userName} an anonymous message --WHISPER`}
-          />
-        )}
         {user ? (
           <section className="flex flex-col justify-between gap-5 rounded-xl bg-gray-800 p-5 sm:w-3/4 lg:w-3/6 mx-auto">
             <div className="text-left text-white font-exo2 font-semibold">

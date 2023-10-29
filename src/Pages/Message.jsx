@@ -110,6 +110,12 @@ const Message = () => {
   }
   return (
     <section className="flex px-3 flex-col w-full justify-center items-center h-screen">
+      {user && (
+        <DynamicOG
+          url={user.userLink}
+          name={`Send ${user.userName} an anonymous message --WHISPER`}
+        />
+      )}
       <section className="w-full">
         <div className="heading text-center font-bold text-xl sm:text-2xl m-5 text-white">
           Write a secret message to {user?.userName}
