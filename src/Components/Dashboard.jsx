@@ -6,6 +6,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import SkeletonLoader from "./SkeletonLoader";
 import { UseGlobalContext } from "./Context";
+
 const Dashboard = () => {
   const auth = getAuth();
   const navigate = useNavigate();
