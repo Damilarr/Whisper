@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         holenVintage: "holenVintage",
         exo: ["Exo", "sans-serif"],
+        slab: ["Roboto Slab", "serif"],
       },
     },
   },

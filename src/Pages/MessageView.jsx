@@ -56,7 +56,7 @@ const MessageView = () => {
                   key={message.id}
                   className="rounded-lg bg-gray-800 text-white space-y-2 flex flex-col justify-around p-4 shadow-sm sm:p-6"
                 >
-                  <span className="text-slate-200 font-exo text-sm text-center sm:text-base font-medium">
+                  <span className="text-slate-200 font-slab text-sm text-center sm:text-base font-medium ">
                     {message.date}
                   </span>
 
@@ -73,13 +73,13 @@ const MessageView = () => {
                   )}
                   <div className="flex items-center text-lg justify-between">
                     <button className="bg-green-700 px-2 shadow-md rounded-md">
-                      <i className="fa-solid fa-reply"></i>
+                      <i class="fa-solid text-gray-300 fa-bookmark"></i>
                     </button>
                     <button
                       onClick={() => deleteMessage(message)}
                       className="bg-green-700 shadow-md px-2 rounded-md"
                     >
-                      <i className="fa fa-trash-can"></i>
+                      <i className="fa text-gray-300 fa-trash-can"></i>
                     </button>
                   </div>
                 </blockquote>
