@@ -13,27 +13,25 @@ import { HelmetProvider } from "react-helmet-async";
 const LazyDashBoard = React.lazy(() => import("./Components/Dashboard"));
 function App() {
   return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <AppContext>
-          <Routes>
-            <Route path="/" element={<Home></Home>} />
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/:uid" element={<Message />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/dashboard"
-              element={
-                <React.Suspense fallback="loading...">
-                  <LazyDashBoard />
-                </React.Suspense>
-              }
-            />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AppContext>
-      </BrowserRouter>
-    </HelmetProvider>
+    <BrowserRouter>
+      <AppContext>
+        <Routes>
+          <Route path="/" element={<Home></Home>} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/:uid" element={<Message />} />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <React.Suspense fallback="loading...">
+                <LazyDashBoard />
+              </React.Suspense>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </AppContext>
+    </BrowserRouter>
   );
 }
 
