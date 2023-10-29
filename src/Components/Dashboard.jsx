@@ -6,7 +6,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import SkeletonLoader from "./SkeletonLoader";
 import { UseGlobalContext } from "./Context";
-import DynamicOG from "./DynamicOG";
+import { Helmet } from "react-helmet-async";
 const Dashboard = () => {
   const auth = getAuth();
   const navigate = useNavigate();
@@ -34,12 +34,6 @@ const Dashboard = () => {
     <>
       <Navbarr />
       <section className="flex flex-col px-4 py-3">
-        {user && (
-          <DynamicOG
-            url={user.userLink}
-            name={`Send ${user.userName} an anonymous message --WHISPER`}
-          />
-        )}
         {user ? (
           <section className="flex flex-col justify-between gap-5 rounded-xl bg-gray-800 p-5 sm:w-3/4 lg:w-3/6 mx-auto">
             <div className="text-left text-white font-exo2 font-semibold">
