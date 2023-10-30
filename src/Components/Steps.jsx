@@ -4,7 +4,7 @@ export function Steps({}) {
     <ol className="space-y-4 w-full sm:w-1/2 lg:w-1/3 py-14">
       <li>
         <div
-          className="w-full p-4 shadow-md shadow  border-l-2 border-yellow-500  rounded-r-lg bg-[#1e293b] "
+          className="w-full p-4 shadow-md border-l-2 border-yellow-500  rounded-r-lg bg-[#1e293b] "
           role="alert"
         >
           <div className="flex items-center justify-between">
@@ -16,7 +16,7 @@ export function Steps({}) {
       </li>
       <li>
         <div
-          className="w-full shadow-md shadow border-l-2 border-yellow-500  rounded-r-lg p-4 bg-[#1e293b] "
+          className="w-full shadow-md border-l-2 border-yellow-500  rounded-r-lg p-4 bg-[#1e293b] "
           role="alert"
         >
           <div className="flex items-center justify-between">
@@ -29,7 +29,7 @@ export function Steps({}) {
       </li>
       <li>
         <div
-          className="w-full p-4 shadow-md shadow  border-l-2 border-yellow-500  rounded-r-lg   bg-[#1e293b] "
+          className="w-full p-4 shadow-md  border-l-2 border-yellow-500  rounded-r-lg   bg-[#1e293b] "
           role="alert"
         >
           <div className="flex items-center justify-between">
@@ -42,7 +42,7 @@ export function Steps({}) {
       </li>
       <li>
         <div
-          className="w-full p-4  border-l-2 border-yellow-500  rounded-r-lg shadow-md shadow bg-[#1e293b] "
+          className="w-full p-4  border-l-2 border-yellow-500  rounded-r-lg shadow-md bg-[#1e293b] "
           role="alert"
         >
           <div className="flex items-center justify-between">
@@ -54,16 +54,13 @@ export function Steps({}) {
       </li>
       <li>
         <div
-          className="w-full p-4 shadow-md shadow border-l-2 border-yellow-500  rounded-r-lg bg-[#1e293b] "
+          className="w-full p-4 shadow-md border-l-2 border-yellow-500  rounded-r-lg bg-[#1e293b] "
           role="alert"
         >
           <div className="flex items-center justify-between">
             <h3 className="font-medium text-gray-400">
               5. Share and Reply to messages.
             </h3>
-            {/* <h3 className="font-medium from-green-700 to-yellow-500 bg-clip-text text-transparent bg-gradient-to-r">
-              5. Share and Reply to messages.
-            </h3> */}
             <i className="fa fa-reply text-green-700"></i>
           </div>
         </div>

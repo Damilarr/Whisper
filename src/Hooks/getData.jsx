@@ -13,7 +13,7 @@ const GetData = (id = null) => {
         if (sessionStorage.getItem("uid")) {
           userId = sessionStorage.getItem("uid");
         } else {
-          console.log("no id");
+          // console.log("no id");
           setUser(null);
           setIsError(false);
           setIsLoading(true);
