@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, memo, useState } from "react";
 import GetData from "../Hooks/getData";
 const GlobalContext = createContext();
 export const UseGlobalContext = () => useContext(GlobalContext);
@@ -19,4 +19,4 @@ const AppContext = ({ children }) => {
   );
 };
 
-export default AppContext;
+export default memo(AppContext);
