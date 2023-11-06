@@ -92,6 +92,7 @@ const MessageView = () => {
             <ReactPaginate
               className="py-5 justify-center items-center space-x-2 paginationn w-3/4 mx-auto flex"
               onPageChange={paginate}
+              pageRangeDisplayed={5}
               pageCount={Math.ceil(user.messages.length / messagesPerPage)}
               previousLabel={"Prev"}
               pageRangeDisplayed={1}
