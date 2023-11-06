@@ -56,7 +56,7 @@ const MessageView = () => {
               return (
                 <blockquote
                   key={message.id}
-                  className="rounded-lg bg-gray-800 text-white space-y-2 flex flex-col justify-around p-4 shadow-sm sm:p-6 sm:max-w-none max-w-[21rem] "
+                  className="rounded-lg bg-gray-800 text-white space-y-2 flex flex-col justify-around p-4 shadow-sm sm:p-6 sm:max-w-none max-w-[21.5rem] "
                 >
                   <span className="text-slate-100 sm:text-slate-200 font-slab text-sm text-center sm:text-base font-medium ">
                     {message.date}
@@ -92,10 +92,9 @@ const MessageView = () => {
             <ReactPaginate
               className="py-5 justify-center items-center space-x-2 paginationn w-3/4 mx-auto flex"
               onPageChange={paginate}
-              pageRangeDisplayed={5}
+              pageRangeDisplayed={1}
               pageCount={Math.ceil(user.messages.length / messagesPerPage)}
               previousLabel={"Prev"}
-              pageRangeDisplayed={1}
               marginPagesDisplayed={1}
               nextLabel={"Next"}
               containerClassName={"pagination"}
