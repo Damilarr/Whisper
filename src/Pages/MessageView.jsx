@@ -41,7 +41,9 @@ const MessageView = () => {
     }
   };
   useEffect(() => {}, [user, user?.messages]);
-
+  if (!isLoading && !user?.messages) {
+    return <p> No message here yet,share your link to recive messages</p>;
+  }
   return (
     <div className="mx-auto max-w-screen-xl py-12">
       <h2 className="text-white px-2 text-center text-4xl font-bold tracking-tight sm:text-5xl">
@@ -54,7 +56,7 @@ const MessageView = () => {
               return (
                 <blockquote
                   key={message.id}
-                  className="rounded-lg bg-gray-800 text-white space-y-2 flex flex-col justify-around p-4 shadow-sm sm:p-6"
+                  className="rounded-lg bg-gray-800 text-white space-y-2 flex flex-col justify-around p-4 shadow-sm sm:p-6 sm:max-w-none max-w-[21rem] "
                 >
                   <span className="text-slate-100 sm:text-slate-200 font-slab text-sm text-center sm:text-base font-medium ">
                     {message.date}
@@ -86,12 +88,14 @@ const MessageView = () => {
               );
             })}
           </div>
-          <div className="py-3">
+          <div className="py-3 max-w-xs sm:max-w-none mx-auto">
             <ReactPaginate
               className="py-5 justify-center items-center space-x-2 paginationn w-3/4 mx-auto flex"
               onPageChange={paginate}
               pageCount={Math.ceil(user.messages.length / messagesPerPage)}
               previousLabel={"Prev"}
+              pageRangeDisplayed={1}
+              marginPagesDisplayed={1}
               nextLabel={"Next"}
               containerClassName={"pagination"}
               pageLinkClassName={"page-number"}
@@ -103,7 +107,8 @@ const MessageView = () => {
         </>
       ) : (
         <p className="text-white py-3 w-full text-lg text-center mx-auto">
-          No message here yet,share your link to recive messages
+          <i className="fa fa-spinner px-2 animate-spin"></i>
+          <span>Loading messages...</span>
         </p>
       )}
       {isError && <p>An Error Occured</p>}
