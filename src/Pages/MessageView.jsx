@@ -73,6 +73,9 @@ const MessageView = () => {
                       height={300}
                     />
                   )}
+                  {message.image && message.image.includes("mp4") && (
+                    <video src={message?.image} controls height={300}></video>
+                  )}
                   <div className="flex items-center text-lg justify-between">
                     <button className="bg-green-700 px-2 shadow-md rounded-md">
                       <i class="fa-solid text-gray-300 fa-bookmark"></i>
