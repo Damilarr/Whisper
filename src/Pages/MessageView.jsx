@@ -45,7 +45,7 @@ const MessageView = () => {
     return (
       <p className="py-10 text-white">
         {" "}
-        No message here yet,share your link to recive messages
+        No message here yet,share your link to receive messages
       </p>
     );
   }
