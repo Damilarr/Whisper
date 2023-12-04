@@ -66,6 +66,7 @@ const Login = () => {
       })
       .catch((error) => {
         const errorMessage = error.message;
+        console.log(error);
         toast.error(errorMessage);
       });
   };
@@ -77,6 +78,7 @@ const Login = () => {
       photoURL: photoURL,
       messages: "",
     }).catch((err) => {
+      console.log(err.message);
       toast.error(err.message);
     });
   };

@@ -42,7 +42,12 @@ const MessageView = () => {
   };
   useEffect(() => {}, [user, user?.messages]);
   if (!isLoading && !user?.messages) {
-    return <p> No message here yet,share your link to recive messages</p>;
+    return (
+      <p className="py-10 text-white">
+        {" "}
+        No message here yet,share your link to recive messages
+      </p>
+    );
   }
   return (
     <div className="mx-auto max-w-screen-xl py-12">
